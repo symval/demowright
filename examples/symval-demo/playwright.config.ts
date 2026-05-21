@@ -51,6 +51,7 @@ export default withDemowright(
     webServer: [
       {
         // Storybook-static for branch B. Build is checked into lib/desktop.
+        // Path is relative to this config's cwd (symval-demo dir).
         command: "bunx serve ../../../desktop/storybook-static -p 6006 -L",
         url: "http://localhost:6006/iframe.html?id=views-setupchecklist--fresh-install&viewMode=story",
         reuseExistingServer: !process.env.CI,
@@ -59,11 +60,14 @@ export default withDemowright(
       },
       {
         // Admin SPA dev server for branch C. API calls are mocked via page.route().
-        command: "bun --cwd ../../../admin run dev -- --port 5173",
+        // Set cwd to lib/admin so `bun run dev` picks up the admin package.json
+        // — `bun --cwd <path>` requires `--cwd=<path>` and was silently treating
+        // the value as a script lookup in demowright's package.json instead.
+        command: "bun run dev -- --port 5173",
         url: "http://localhost:5173/login",
         reuseExistingServer: !process.env.CI,
         timeout: 90_000,
-        cwd: import.meta.dirname,
+        cwd: resolve(import.meta.dirname, "../../../admin"),
       },
     ],
   }),
