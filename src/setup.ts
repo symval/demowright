@@ -603,20 +603,25 @@ function finalizeRenderJob(
     }
   }
 
-  // ffmpeg not available — print the command for manual use
+  // ffmpeg not available — print the command for manual use.
+  // Use a dynamic import (ESM-safe) rather than CJS `require`, which throws
+  // ReferenceError in ESM contexts after a transient ffmpeg failure.
   if (videoPaths.length > 0) {
-    const { buildFfmpegCommand } = require("./video-script.js");
-    if (typeof buildFfmpegCommand === "function") {
-      const cmd = buildFfmpegCommand(
-        videoPaths[0] ?? "<video.webm>",
-        job.wavPath,
-        job.srtPath,
-        job.chaptersPath,
-        job.mp4Path,
-        job.timeline,
-      );
-      console.log(`[demowright] Run manually:\n${cmd}`);
-    }
+    import("./video-script.js")
+      .then((mod) => {
+        if (typeof mod.buildFfmpegCommand === "function") {
+          const cmd = mod.buildFfmpegCommand(
+            videoPaths[0] ?? "<video.webm>",
+            job.wavPath,
+            job.srtPath,
+            job.chaptersPath,
+            job.mp4Path,
+            job.timeline,
+          );
+          console.log(`[demowright] Run manually:\n${cmd}`);
+        }
+      })
+      .catch(() => {});
   }
 }
 

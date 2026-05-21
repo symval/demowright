@@ -1,0 +1,54 @@
+{
+  "nodes": [
+    { "id": "root", "label": "symval.pages.dev", "kind": "root", "branch": "root", "url": "https://symval.pages.dev/" },
+
+    { "id": "A", "label": "Landing", "kind": "branch", "branch": "A" },
+    { "id": "A2", "label": "Private LP", "kind": "leaf", "branch": "A", "url": "https://symval.pages.dev/private-lp/" },
+    { "id": "A3", "label": "Survey", "kind": "leaf", "branch": "A", "url": "https://symval.pages.dev/survey/" },
+    { "id": "A4", "label": "Docs index", "kind": "leaf", "branch": "A", "url": "https://symval.pages.dev/docs/" },
+    { "id": "A5", "label": "How-to macOS", "kind": "leaf", "branch": "A", "url": "https://symval.pages.dev/docs/how-to-macos.html" },
+    { "id": "A6", "label": "How-to Windows", "kind": "leaf", "branch": "A", "url": "https://symval.pages.dev/docs/how-to-windows.html" },
+
+    { "id": "B", "label": "Desktop Storybook", "kind": "branch", "branch": "B" },
+    { "id": "B1", "label": "SetupChecklist — Fresh", "kind": "leaf", "branch": "B" },
+    { "id": "B2", "label": "SetupChecklist — Partial", "kind": "leaf", "branch": "B" },
+    { "id": "B4", "label": "StatusHome — Complete", "kind": "leaf", "branch": "B" },
+    { "id": "B5", "label": "StatusHome — Signed In", "kind": "leaf", "branch": "B" },
+    { "id": "B6", "label": "ProxySettings — Off", "kind": "leaf", "branch": "B" },
+    { "id": "B7", "label": "ProxySettings — On", "kind": "leaf", "branch": "B" },
+
+    { "id": "C", "label": "Admin SPA", "kind": "branch", "branch": "C" },
+    { "id": "C1", "label": "/signup", "kind": "leaf", "branch": "C" },
+    { "id": "C2", "label": "/login", "kind": "leaf", "branch": "C" },
+    { "id": "C5", "label": "/ Dashboard", "kind": "leaf", "branch": "C" },
+    { "id": "C6", "label": "/devices", "kind": "leaf", "branch": "C" },
+    { "id": "C7", "label": "/analyzations", "kind": "leaf", "branch": "C" },
+    { "id": "C8", "label": "/rules", "kind": "leaf", "branch": "C" },
+    { "id": "C9", "label": "/members", "kind": "leaf", "branch": "C" },
+    { "id": "C10", "label": "/settings", "kind": "leaf", "branch": "C" }
+  ],
+  "edges": [
+    { "from": "root", "to": "A" },
+    { "from": "root", "to": "B" },
+    { "from": "root", "to": "C" },
+    { "from": "A", "to": "A2" },
+    { "from": "A2", "to": "A3" },
+    { "from": "A2", "to": "A4" },
+    { "from": "A4", "to": "A5" },
+    { "from": "A4", "to": "A6" },
+    { "from": "B", "to": "B1" },
+    { "from": "B1", "to": "B2" },
+    { "from": "B2", "to": "B4" },
+    { "from": "B4", "to": "B5" },
+    { "from": "B", "to": "B6" },
+    { "from": "B6", "to": "B7" },
+    { "from": "C", "to": "C2" },
+    { "from": "C2", "to": "C1" },
+    { "from": "C2", "to": "C5" },
+    { "from": "C5", "to": "C6" },
+    { "from": "C5", "to": "C7" },
+    { "from": "C5", "to": "C8" },
+    { "from": "C5", "to": "C9" },
+    { "from": "C5", "to": "C10" }
+  ]
+}
