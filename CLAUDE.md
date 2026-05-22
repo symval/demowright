@@ -87,6 +87,22 @@ Use `bun` — never `npm`. Install deps with `bun i`, run scripts with `bun run`
 | [docs/examples.md](docs/examples.md) | 6 runnable demo scenarios |
 | [docs/wrapper.md](docs/wrapper.md) | Strategies for native Playwright call interception |
 
+## Gotchas (Playwright spec authoring)
+
+- **`page.route()` runs in reverse registration order.** The last-registered
+  matching handler wins. If you use a catch-all like `**/api/**` for unknown
+  endpoints, register it FIRST so the specific routes registered after it
+  take precedence. Reversing this silently breaks every specific mock.
+- **`bun --cwd <path>` is silently ignored** — bun's flag parser only
+  honors `--cwd=<path>` with `=`. The space-separated form treats `<path>`
+  as a script name in the *current* directory's package.json and ends up
+  printing the help banner. In Playwright configs, prefer
+  `webServer.cwd: resolve(__dirname, "../some/path")` instead.
+- **Playwright wipes `outputDir` between runs.** If you write your final
+  mp4s into the same dir Playwright uses for test artifacts, they get
+  deleted on the next run. Point `outputDir` at a scratch dir and pass a
+  separate dir to `script.render({ outputDir: ... })`.
+
 ## Examples
 
 | # | File | What it demonstrates |
