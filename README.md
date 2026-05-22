@@ -19,6 +19,13 @@ Playwright HUD plugin — renders a visible **mouse cursor**, **keystroke displa
 npx playwright test --config examples/playwright.config.ts  # run all 6
 ```
 
+### Real-world deployment
+
+**[symval-tour.pages.dev](https://symval-tour.pages.dev)** — 19 narrated demo videos
+(landing → desktop storybook → admin SPA) wired into a d3 sitemap graph. Built
+end-to-end with this plugin; source under
+[`examples/symval-demo/`](examples/symval-demo/).
+
 ## Problem
 
 Playwright's video recording doesn't capture the browser cursor or keyboard input. Tests run too fast for meaningful video review.
