@@ -5,8 +5,9 @@ import warnings; warnings.filterwarnings('ignore')
 
 SECRETS = str(pathlib.Path.home() / 'client_secrets.json')
 TOKEN   = str(pathlib.Path.home() / 'youtube_token.json')
-VIDEO   = '/Users/snomiao/ws/snomiao/playwright-multi-tab/tree/main/tmp/output/screen-recording-with-intro.mp4'
-THUMB   = '/Users/snomiao/ws/snomiao/playwright-multi-tab/tree/main/tmp/output/thumbnail.jpg'
+# Paths are relative to the demo project you run this from; override with env vars.
+VIDEO   = os.environ.get('VIDEO_PATH', 'tmp/output/screen-recording-with-intro.mp4')
+THUMB   = os.environ.get('THUMB_PATH', 'tmp/output/thumbnail.jpg')
 SCOPES  = ['https://www.googleapis.com/auth/youtube.upload']
 
 from google_auth_oauthlib.flow import InstalledAppFlow
